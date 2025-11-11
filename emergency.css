@@ -30,11 +30,14 @@ body {
 
      .back-btn {
         display: block;
-        margin: 0 0 1rem -24px;
         color: rgb(180, 175, 175);
   font-weight: 600;
   transition: color 0.3s ease;
   font-size: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0; 
     }
 
     a {
@@ -64,15 +67,18 @@ body {
       color: #fff;
       border-radius: 12px;
       padding: 16px 50px;
-      margin-bottom: 24px;
+      margin-top: 20px;
       font-size: 16px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
-      transition: background 0.3s;
+      transition: 0.3s ease;
+      font-weight: 500;
+      border: none;
     }
 
     .add-btn:hover {
+      opacity: 1;
       background-color: #b91c1c;
     }
