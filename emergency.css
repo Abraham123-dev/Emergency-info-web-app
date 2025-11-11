@@ -5,13 +5,18 @@ body {
       padding: 40px 16px;
         background: radial-gradient(125% 125% at 50% 100%, #000000 40%, #2b0707 100%);
         min-height: 100vh;
+       box-sizing: border-box;
     }
 
     .container {
         max-width: 600px;
         margin: 0 auto;
-       padding: 24px; 
+       padding: 24px;
        border-radius: 16px;
+       display: flex;
+       flex-direction: column;
+       justify-content: flex-start;
+       animation: fadeIn 1s ease-out;
     }
 
     h1 {
@@ -24,20 +29,17 @@ body {
         color: #b1b0b0;
     }
 
-    button {
-       cursor: pointer;
-       border: none;
-        background: none;
-        font-family: 'Inter', sans-serif;
-    }
 
      .back-btn {
         display: block;
-        margin: 0 0 1rem -24px;
         color: rgb(180, 175, 175);
   font-weight: 600;
   transition: color 0.3s ease;
   font-size: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0; 
     }
 
     a {
@@ -61,20 +63,83 @@ body {
     }
 
     .add-btn {
+      font-family: inherit;
       width: 100%;
       background-color: #dc2626;
       color: #fff;
       border-radius: 12px;
       padding: 16px 50px;
-      margin-bottom: 24px;
+      margin-top: 20px;
       font-size: 16px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
-      transition: background 0.3s;
+      transition: 0.3s ease;
+      font-weight: 500;
+      border: none;
+      animation: popOut 1.6s ease-out;
     }
 
     .add-btn:hover {
+      opacity: 1;
       background-color: #b91c1c;
     }
+
+    .box-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 24px;
+        border-radius: 16px;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin: 20px auto 0 auto;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        animation: fadeIn 1.4s ease-out;
+
+    }
+
+    .box-container-emoji {
+      font-size: 48px;
+      margin-bottom: 5px;
+    }
+
+    .box-heading {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .box-paragraph {
+      color: #b1b0b0;
+      font-size: 1rem;
+    }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

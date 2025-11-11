@@ -374,8 +374,8 @@ backdrop-filter: blur(16px);
 }
 
 .back-btn {
-  background: #ffffff;
-  color: white;
+  /* background: #ffffff; */
+  color:   rgb(180, 175, 175);;
   border: none;
   padding: 10px 16px;
   border-radius: 8px;
@@ -386,7 +386,7 @@ backdrop-filter: blur(16px);
 }
 
 .back-btn:hover {
-  transform: translateY(-3px);
+  transform: translateX(-3px);
 }
 
 
@@ -651,6 +651,107 @@ h1 {
 .toast.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .header {
+    max-width: 100%;
+    padding: 20px 16px;
+  }
+
+  .header h1 {
+    font-size: 3rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .info-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .header {
+    padding: 16px 12px;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  .status {
+    font-size: 0.9rem;
+    padding: 5px 12px;
+  }
+
+  .cards {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .emoji {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .card-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .bxr {
+    font-size: 1.5rem;
+  }
+
+  .add-btn {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .info-cards {
+    gap: 10px;
+  }
+
+  .info-card {
+    padding: 16px;
+  }
+
+  .info-emoji {
+    font-size: 1.5rem;
+  }
+
+  .info-text {
+    font-size: 0.9rem;
+  }
 }
 
 
