@@ -32,14 +32,24 @@ body {
     }
 
      .back-btn {
-     display: block;
-  margin: 0 0 1rem -24px;
-   color: rgb(180, 175, 175);
+        display: block;
+        margin: 0 0 1rem -24px;
+        color: rgb(180, 175, 175);
   font-weight: 600;
   transition: color 0.3s ease;
   font-size: 16px;
-  text-decoration: none;
+    }
 
+    a {
+        text-decoration: none;
+    }
+
+    a::after {
+        text-decoration: none;
+    }
+
+    a::before {
+        text-decoration: none;
     }
 
     .back-btn:hover {
