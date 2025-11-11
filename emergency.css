@@ -25,20 +25,29 @@ body {
     }
 
     button {
-        cursor: pointer;
-        border: none;
-        outline: none;
+       cursor: pointer;
+       border: none;
+        background: none;
+        font-family: 'Inter', sans-serif;
     }
 
      .back-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 16px;
+     display: block;
+  margin: 0 0 1rem -24px;
+   color: rgb(180, 175, 175);
+  font-weight: 600;
+  transition: color 0.3s ease;
+  font-size: 16px;
+  text-decoration: none;
+
     }
 
     .back-btn:hover {
-      text-decoration: underline;
+        color: rgb(102, 90, 90);
+    }
+
+    .back-btn:hover {
+      text-decoration: none;
     }
 
     .add-btn {
