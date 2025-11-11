@@ -23,6 +23,10 @@ body {
   padding: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .header {
       max-width: 380px;
       margin: 0 auto;
