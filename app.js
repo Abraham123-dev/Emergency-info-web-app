@@ -53,10 +53,18 @@ const guides = [
 
 const container = document.getElementById("guides-list");
 
+<<<<<<< HEAD
+// Render guides only on pages that have the guides list container
+if (container) {
+  guides.forEach((guide, index) => {
+  const card = document.createElement("div");
+  card.className = "guide";
+=======
 if (container) {
   guides.forEach((guide, index) => {
     const card = document.createElement("div");
     card.className = "guide";
+>>>>>>> 4de7f4f256264792996de5a4d168b563ae3768e2
 
     card.innerHTML = `
     <div class="guide-header" onclick="toggleSteps(${index})">
@@ -76,10 +84,17 @@ if (container) {
 
     container.appendChild(card);
 
+<<<<<<< HEAD
+  setTimeout(() => {
+    card.style.opacity = "1";
+    card.style.transform = "translateY(0)";
+  }, index * 100);
+=======
     setTimeout(() => {
       card.style.opacity = "1";
       card.style.transform = "translateY(0)";
     }, index * 100);
+>>>>>>> 4de7f4f256264792996de5a4d168b563ae3768e2
   });
 }
 
@@ -103,6 +118,118 @@ if (button) {
   button.addEventListener("click", () => {
     window.location.href = "index.html";
   });
+<<<<<<< HEAD
+}
+
+
+// // --- Contacts: load, render and save ---
+// const STORAGE_KEY = "emergencyContacts";
+
+// // Load contacts from localStorage (or start with empty array)
+// let contacts = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+// // Utility: update the counter element (if present)
+// function updateCounter() {
+//   const counterEl = document.getElementById("counter");
+//   const headerCount = document.getElementById('contact count') || document.querySelector('.header p');
+//   const count = contacts.length;
+//   if (counterEl) {
+//     counterEl.textContent = count === 0 ? "No Contacts Yet" : `${count} contact${count > 1 ? "s" : ""}`;
+//   }
+//   // Also update header paragraph if present
+//   if (headerCount) {
+//     headerCount.textContent = `${count} contact${count !== 1 ? "s" : ""} saved`;
+//   }
+// }
+
+// // Render contacts list on emergency-contacts page
+// function renderContacts() {
+//   const list = document.getElementById("contacts-list");
+//   if (!list) return;
+//   list.innerHTML = "";
+//   if (contacts.length === 0) {
+//     list.innerHTML = ""; // empty
+//     return;
+//   }
+
+//   contacts.forEach((c, i) => {
+//     const card = document.createElement('div');
+//     card.className = 'contact-card';
+//     card.innerHTML = `
+//       <div class="contact-info">
+//         <h3>${c.name}</h3>
+//         <p>${c.phone}</p>
+//         <p style="color:#6b7280; font-size:0.9rem">${c.category || ''}</p>
+//       </div>
+//       <div>
+//         <button class="call-btn" onclick="window.location.href='tel:${c.phone}'">Call</button>
+//       </div>
+//     `;
+//     list.appendChild(card);
+//   });
+// }
+
+// // Save contact (used by add-contact page)
+// const contactForm = document.querySelector("#contactForm");
+// if (contactForm) {
+//   contactForm.addEventListener('submit', function saveContact(e) {
+//     e.preventDefault();
+//     const emergencyContactName = document.querySelector("#name").value;
+//     const emergencyContactPhone = document.querySelector("#phone").value;
+//     const emergencyContactCategory = document.querySelector("#category").value;
+//     const emergencyContactNote = document.querySelector("#note").value;
+
+//     const contact = {
+//       name: emergencyContactName,
+//       phone: emergencyContactPhone,
+//       category: emergencyContactCategory,
+//       note: emergencyContactNote,
+//     };
+
+//     contacts.push(contact);
+//     localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+
+//     // show toast if present
+//     const toast = document.getElementById('toast');
+//     if (toast) {
+//       toast.classList.add('show');
+//       setTimeout(() => toast.classList.remove('show'), 2000);
+//     }
+
+//     // navigate back to contacts after a short delay
+//     setTimeout(() => { location.href = 'emergency-contacts.html'; }, 800);
+//   });
+// }
+
+// // Initialize contact views on pages
+// updateCounter();
+// renderContacts();
+
+
+
+const STORAGE_KEY = "emergencyContacts";
+let contacts = JSON.parse(localStorage.getItem(STORAGE_KEY)) || '[]';
+
+function updateCounter () {
+  const contactCounter = document.getElementById('counter');
+  const count = contacts.length;
+  const headerCount = document.querySelector("header p") || document.getElementById('contact count');
+  if (count === 0) {
+    contactCounter.textContent = "No Contacts Yet";
+  } else if (count === 1) {
+    contactCounter.textContent = "1 Contact Saved";
+  } else {
+    contactCounter.textContent = `${count} Contacts Saved`;
+  }
+}
+
+function renderContacts() {
+  const lists = document.getElementById('contacts-list');
+
+  if (lists === null) return 
+   lists.innerHTML = "";
+   
+=======
 }
 
 const contactForm = document.querySelector("#contactForm");
@@ -251,4 +378,5 @@ function deleteContact(index) {
 // Load contacts on page load if on emergency-contacts.html
 if (document.getElementById("contacts-list")) {
   loadContacts();
+>>>>>>> 4de7f4f256264792996de5a4d168b563ae3768e2
 }
