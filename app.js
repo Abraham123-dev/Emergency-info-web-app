@@ -113,10 +113,33 @@ if (contactForm) {
 function saveContact(e) {
   e.preventDefault();
 
-  const emergencyContactName = document.querySelector("#name").value;
-  const emergencyContactPhone = document.querySelector("#phone").value;
+  const emergencyContactName = document.querySelector("#name").value.trim();
+  const emergencyContactPhone = document.querySelector("#phone").value.trim();
   const emergencyContactCategory = document.querySelector("#category").value;
   const emergencyContactNote = document.querySelector("#note").value;
+   
+   if (/\d/.test(emergencyContactName)) {
+    showErrorToast("❌ Name cannot contain numbers. Please enter a valid name.");
+    return;
+  }
+
+  // Validation: Name should not be empty
+  if (emergencyContactName === "") {
+    showErrorToast("❌ Name is required. Please enter a name.");
+    return;
+  }
+
+  // Validation: Phone should only contain digits, spaces, dashes, plus, parentheses
+  if (!/^[\d\s\-+()]+$/.test(emergencyContactPhone)) {
+    showErrorToast("❌ Phone can only contain numbers and symbols (+, -, (), spaces).");
+    return;
+  }
+
+  // Validation: Phone should not be empty
+  if (emergencyContactPhone === "") {
+    showErrorToast("❌ Phone number is required. Please enter a phone number.");
+    return;
+  }
 
   const contact = {
     name: emergencyContactName,
@@ -143,10 +166,37 @@ function saveContact(e) {
   }, 2000);
 }
 
-// Load and display contacts on emergency-contacts.html
+
+function showErrorToast(message) {
+  const errorToast = document.createElement('div');
+
+  errorToast.className = "toast error-toast";
+  errorToast.textContent = message;
+  document.body.appendChild(errorToast);
+
+
+  setTimeout(() => {
+    errorToast.classList.add('show');
+  }, 10);
+
+
+  setTimeout(() => {
+    errorToast.classList.remove("show");
+    setTimeout(() => {
+      if (document.body.contains(errorToast)) {
+        document.body.removeChild(errorToast);
+      }
+    }, 300);
+  }, 3000);
+}
+
+
+
 function loadContacts() {
   const contactsList = document.getElementById("contacts-list");
   const contactCount = document.getElementById("contact-count");
+  const names = document.getElementById("names");
+
   if (!contactsList) return;
 
   let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
