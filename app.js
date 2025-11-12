@@ -53,11 +53,12 @@ const guides = [
 
 const container = document.getElementById("guides-list");
 
-guides.forEach((guide, index) => {
-  const card = document.createElement("div");
-  card.className = "guide";
+if (container) {
+  guides.forEach((guide, index) => {
+    const card = document.createElement("div");
+    card.className = "guide";
 
-  card.innerHTML = `
+    card.innerHTML = `
     <div class="guide-header" onclick="toggleSteps(${index})">
       <div class="guide-info">
         <span class="icon">${guide.icon}</span>
@@ -73,13 +74,14 @@ guides.forEach((guide, index) => {
     </div>
   `;
 
-  container.appendChild(card);
+    container.appendChild(card);
 
-  setTimeout(() => {
-    card.style.opacity = "1";
-    card.style.transform = "translateY(0)";
-  }, index * 100);
-});
+    setTimeout(() => {
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, index * 100);
+  });
+}
 
 function toggleSteps(i) {
   const steps = document.getElementById(`steps-${i}`);
@@ -97,10 +99,11 @@ function toggleSteps(i) {
 }
 
 const button = document.querySelector(".back-btn");
-button.addEventListener("click", () => {
-  window.location.href = "index.html";
-});
-
+if (button) {
+  button.addEventListener("click", () => {
+    window.location.href = "index.html";
+  });
+}
 
 const contactForm = document.querySelector("#contactForm");
 
@@ -123,17 +126,14 @@ function saveContact(e) {
     note: emergencyContactNote,
   };
 
-
   let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
 
   contacts.push(contact);
-
 
   localStorage.setItem("emergencyContacts", JSON.stringify(contacts));
 
   console.log("Contact saved:", contact);
   console.log("All contacts:", contacts);
-
 
   const toast = document.querySelector("#toast");
   toast.classList.add("show");
@@ -159,7 +159,9 @@ function loadContacts() {
     return;
   }
 
-  contactCount.textContent = `${contacts.length} contact${contacts.length > 1 ? 's' : ''} saved`;
+  contactCount.textContent = `${contacts.length} contact${
+    contacts.length > 1 ? "s" : ""
+  } saved`;
 
   contacts.forEach((contact, index) => {
     const contactDiv = document.createElement("div");
@@ -169,7 +171,7 @@ function loadContacts() {
         <h3>${contact.name}</h3>
         <p><strong>Phone:</strong> ${contact.phone}</p>
         <p><strong>Category:</strong> ${contact.category}</p>
-        <p><strong>Note:</strong> ${contact.note || 'None'}</p>
+        <p><strong>Note:</strong> ${contact.note || "None"}</p>
       </div>
       <div class="contact-actions">
         <button class="edit-btn" onclick="editContact(${index})">Edit</button>
@@ -190,14 +192,26 @@ function editContact(index) {
       <label>Name: <input type="text" value="${contact.name}" required></label>
       <label>Phone: <input type="tel" value="${contact.phone}" required></label>
       <label>Category: <select required>
-        <option value="family" ${contact.category === 'family' ? 'selected' : ''}>Family</option>
-        <option value="medical" ${contact.category === 'medical' ? 'selected' : ''}>Medical</option>
-        <option value="friends" ${contact.category === 'friends' ? 'selected' : ''}>Friends</option>
-        <option value="work" ${contact.category === 'work' ? 'selected' : ''}>Work</option>
-        <option value="emergency" ${contact.category === 'emergency' ? 'selected' : ''}>Emergency Services</option>
-        <option value="other" ${contact.category === 'other' ? 'selected' : ''}>Other</option>
+        <option value="family" ${
+          contact.category === "family" ? "selected" : ""
+        }>Family</option>
+        <option value="medical" ${
+          contact.category === "medical" ? "selected" : ""
+        }>Medical</option>
+        <option value="friends" ${
+          contact.category === "friends" ? "selected" : ""
+        }>Friends</option>
+        <option value="work" ${
+          contact.category === "work" ? "selected" : ""
+        }>Work</option>
+        <option value="emergency" ${
+          contact.category === "emergency" ? "selected" : ""
+        }>Emergency Services</option>
+        <option value="other" ${
+          contact.category === "other" ? "selected" : ""
+        }>Other</option>
       </select></label>
-      <label>Note: <textarea>${contact.note || ''}</textarea></label>
+      <label>Note: <textarea>${contact.note || ""}</textarea></label>
       <button type="submit">Save</button>
       <button type="button" onclick="cancelEdit(${index})">Cancel</button>
     </form>
@@ -238,5 +252,3 @@ function deleteContact(index) {
 if (document.getElementById("contacts-list")) {
   loadContacts();
 }
-
-
