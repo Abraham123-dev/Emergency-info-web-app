@@ -190,7 +190,7 @@ function editContact(index) {
     <form class="edit-form" onsubmit="saveEdit(event, ${index})">
       <label>Name: <input type="text" value="${contact.name}" required></label>
       <label>Phone: <input type="tel" value="${contact.phone}" required></label>
-      <label>Category: <select required>
+      <label> Category: <select required>
         <option value="family" ${
           contact.category === "family" ? "selected" : ""
         }>Family</option>
@@ -232,6 +232,7 @@ function saveEdit(e, index) {
 
   localStorage.setItem("emergencyContacts", JSON.stringify(contacts));
   loadContacts();
+  updateBoxContainer();
 }
 
 function cancelEdit(index) {
@@ -244,10 +245,26 @@ function deleteContact(index) {
     contacts.splice(index, 1);
     localStorage.setItem("emergencyContacts", JSON.stringify(contacts));
     loadContacts();
+    updateBoxContainer();
   }
 }
 
-// Load contacts on page load if on emergency-contacts.html
 if (document.getElementById("contacts-list")) {
   loadContacts();
 }
+
+function updateBoxContainer() {
+  const boxContainer = document.querySelector('.box-container');
+  if (!boxContainer) return;
+  let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
+  boxContainer.style.display = contacts.length === 0 ? "flex" : "none";
+
+  if (contacts.length === 0) {
+    boxContainer.style.display = "flex";
+  } else {
+    boxContainer.style.display = "none";
+  }
+}
+
+updateBoxContainer();
+
