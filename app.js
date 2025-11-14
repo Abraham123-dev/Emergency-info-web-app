@@ -117,8 +117,9 @@ function saveContact(e) {
   const emergencyContactPhone = document.querySelector("#phone").value.trim();
   const emergencyContactCategory = document.querySelector("#category").value;
   const emergencyContactNote = document.querySelector("#note").value;
-   
-   if (/\d/.test(emergencyContactName)) {
+  const formContainer = document.querySelector(".container-contact");
+
+  if (/\d/.test(emergencyContactName)) {
     showErrorToast("❌ Name cannot contain numbers. Please enter a valid name.");
     return;
   }
@@ -160,10 +161,17 @@ function saveContact(e) {
   const toast = document.querySelector("#toast");
   toast.classList.add("show");
 
+  if (formContainer) {
+    formContainer.style.display = "none";
+  }
+
   setTimeout(() => {
     toast.classList.remove("show");
     location.href = "emergency-contacts.html";
   }, 2000);
+
+  contactForm.reset();
+  updateBoxContainer();
 }
 
 
@@ -317,4 +325,3 @@ function updateBoxContainer() {
 }
 
 updateBoxContainer();
-
